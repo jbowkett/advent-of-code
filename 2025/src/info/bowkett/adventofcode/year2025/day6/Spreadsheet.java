@@ -1,9 +1,8 @@
 package info.bowkett.adventofcode.year2025.day6;
 
+import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
 import java.util.List;
-
-import static java.lang.Integer.parseInt;
 
 public class Spreadsheet {
   private final List<String> allLines;
@@ -33,7 +32,7 @@ public class Spreadsheet {
   private List<Sum> firtstMethod() {
     List<Sum> sums = null;
     for (String line : allLines) {
-      final String[] values = line.trim().split(" ");
+      final String[] values = line.trim().split("\\s+");
       if (sums == null) {
         sums = new ArrayList<>(values.length);
         for (String _ignored : values) {
@@ -78,7 +77,7 @@ public class Spreadsheet {
         sums.add(sum);
       }
     }
-    //add the last index
+    // add the last index
     indexes.add(charArray.length);
 
     for (int i = 0; i < indexes.size() - 1; i++) {
@@ -89,7 +88,8 @@ public class Spreadsheet {
       for (int j = startIndex; j < nextIndex; j++) {
         final StringBuilder buffer = new StringBuilder();
         for (String line : allLines) {
-          if (line != null) buffer.append(line.charAt(j));
+          if (line != null)
+            buffer.append(line.charAt(j));
         }
         final var number = buffer.toString().trim();
         if (!number.isEmpty()) {
